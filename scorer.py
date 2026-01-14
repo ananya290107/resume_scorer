@@ -1,7 +1,8 @@
 import re
-from openai import OpenAI
+import openai
+import os
 
-client = OpenAI()  # expects environment variable OPENAI_API_KEY
+openai.api_key = os.getenv("OPENAI_API_KEY")  # expects environment variable OPENAI_API_KEY
 
 
 def score_resume(resume_text, job_description=None):
@@ -36,7 +37,7 @@ Respond ONLY in this JSON format:
 }}
     """
 
-    response = client.chat.completions.create(
+    response = openai.ChatCompletion.create(
         model="gpt-4.1-mini",
         messages=[{"role": "user", "content": prompt}],
         temperature=0.2
