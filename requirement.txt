@@ -1,5 +1,5 @@
 pdfplumber
 python-docx
-openai
+openai>=1.0.0
 streamlit
-PyPDF2
+pypdf2
